@@ -1,0 +1,30 @@
+<%- include("header") -%>
+
+<div class="box" id="heading">
+    <h1 style="color: black;">
+        <%= listTitle %>
+    </h1>
+</div>
+
+<div class="box">
+    <% pusheditems.forEach((item)=>{ %>
+        <form action="/delete" method="post">
+            <div class="item">
+                <input type="checkbox" onchange="this.form.submit()" name="marked" value="<%=item._id %>" id="">
+                <p>
+                    <%= item.name %>
+                </p>
+            </div>
+            <input type="hidden" name="listName" value="<%= listTitle %>">
+        </form>
+
+    <% }) %>
+        
+        <form action="/" method="post" class="item">
+            
+            <input type="text" name="item" placeholder="Enter Item" autocomplete="off">
+            <button type="submit" name="button" value="<%= listTitle %>">+</button>
+        </form>
+    </div>
+    
+    <%- include("footer") -%>
